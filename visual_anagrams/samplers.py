@@ -76,14 +76,14 @@ def sample_stage_1(model,
 
         # Inside the timestep loop in sample_stage_1 or sample_stage_2
         if i % 10 == 0:  # Save every n steps
-          # Convert to image format
-          intermediate = noisy_images[0].detach().cpu()
-          # Normalize to [0,1] range
-          intermediate = (intermediate - intermediate.min()) / (intermediate.max() - intermediate.min())
-          # Convert to PIL image
-          pil_image = TF.to_pil_image(intermediate)
-          # Save
-          pil_image.save(f"intermediate_step_{i}.png")
+            # Convert to image format
+            intermediate = noisy_images[0].detach().cpu()
+            # Normalize to [0,1] range
+            intermediate = (intermediate - intermediate.min()) / (intermediate.max() - intermediate.min())
+            # Convert to PIL image
+            pil_image = TF.to_pil_image(intermediate)
+            # Save
+            pil_image.save(f"intermediate_step_{i}.png")
 
         # Duplicate inputs for CFG
         # Model input is: [ neg_0, neg_1, ..., pos_0, pos_1, ... ]
